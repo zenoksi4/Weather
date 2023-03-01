@@ -1,13 +1,15 @@
 const axios = require('axios');
-const { search } = require('../routes/weatherRouters');
-const { getCityCoord, getWeatherByCoord } = require('../services/ApiRequests')
+
+const { getCityCoord, getWeatherByCoord } = require('../services/ApiRequests');
+const { listDailyWeather } = require('../services/listWeather');
 
 
 const getWeather = async (req, res) => {
     try {
         const searchCity = req.query.city
         const coord = await getCityCoord(searchCity);
-        const dailyWeather = await getWeatherByCoord(coord);
+        const dailyWeatherApi = await getWeatherByCoord(coord);
+        const dailyWeather = listDailyWeather(dailyWeatherApi);
 
         res.status(200).json(
             {   

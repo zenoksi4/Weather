@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 
 function SearchBar() {
 
-
   return (
     <Form className='row align-items-center justify-content-center mt-3'>
       <Form.Group className="col-6 col-sm-8 col-md-5 col-lg-3" controlId="formBasicEmail">

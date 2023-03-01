@@ -9,9 +9,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/weather', (req, res) => {
-    res.send('Hello world');
-});
+app.use('/weather', require('./routes/weatherRouters'));
 
 
 app.listen(port, () => {

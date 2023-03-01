@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import weatherService from '../services/weatherService';
 
-export const getWeather = createAsyncThunk('GET_WEATHER', async (_, thunkAPI) => {
+export const getWeather = createAsyncThunk('GET_WEATHER', async (location, thunkAPI) => {
     try {
-        return await weatherService.getWeather();
+        return await weatherService.getWeather(location);
 
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)

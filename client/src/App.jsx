@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getWeather } from './store/weather/weatherSlice';
 
 import CardWeather from "./components/CardWeather";
@@ -8,10 +8,11 @@ import SearchBar from "./components/SearchBar";
 function App() {
   const dispatch = useDispatch();
   const { weather, isLoading } = useSelector((state) => state.weather);
+  const [location, setLocation] = useState('')
+
 
   useEffect(() => {
-    dispatch(getWeather())
-
+    dispatch(getWeather(location));
   }, [dispatch]);
   
   return (

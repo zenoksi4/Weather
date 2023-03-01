@@ -9,9 +9,9 @@ function SearchBar() {
         <Form.Control type="text" placeholder="Enter city" />
       </Form.Group>
       <div className='col-6 col-sm-4 col-md-3 col-lg-2'>
-      <Button  variant="primary" type="submit">
-        Get weather
-      </Button>
+        <Button  variant="primary" type="submit">
+          Get weather
+        </Button>
       </div>
     </Form>
 

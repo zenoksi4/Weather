@@ -8,7 +8,7 @@ const getWeather = async (location = '') => {
         
       }
 
-    const weather = await axios.get(`http://localhost:5000/weather?city=${location}`);
+    const weather = await axios.get(`https://weather-xsao.onrender.com/weather?city=${location}`);
 
     return weather.data;
 }

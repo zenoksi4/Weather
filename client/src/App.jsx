@@ -7,6 +7,8 @@ import SearchBar from "./components/SearchBar";
 import CardDay from './components/CardDay';
 import CardsWrapper from './components/CardsWrapper';
 import Loader from './components/Loader';
+import Badge from 'react-bootstrap/Badge';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
       {  
         !isLoading ?
           <div>
-            {weatherCity && weatherCity.weather &&
+            {(weatherCity && weatherCity.weather) ?
               <CardsWrapper> 
                 <CardWeather city={weatherCity.city} weather={weatherCity.weather[activeDay]} />
                 {
@@ -42,10 +44,11 @@ function App() {
 
                       ))
                 }
-              </CardsWrapper>
+              </CardsWrapper>:
+              
+            <NotFound />
             }
           </div>:
-
           <Loader />
 
       }

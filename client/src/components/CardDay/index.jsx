@@ -16,7 +16,6 @@ function CardDay({
     
     const dayWeek = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(new Date(weather.date * 1000))
 
-
     return (
         <div 
             className={`col-md-3 col-sm-6 ${activeDay === index ? styles.active: styles.cardDay}`} 

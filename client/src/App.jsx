@@ -6,6 +6,7 @@ import CardWeather from "./components/CardWeather";
 import SearchBar from "./components/SearchBar";
 import CardDay from './components/CardDay';
 import CardsWrapper from './components/CardsWrapper';
+import Loader from './components/Loader';
 
 
 function App() {
@@ -16,32 +17,38 @@ function App() {
 
   useEffect(() => {
     dispatch(getWeather(location));
-    console.log(weatherCity)
-  }, [dispatch]);
+  }, [dispatch, location]);
   
   return (
-
     <div className='container text-center '>
-    <SearchBar />
-        {weatherCity && weatherCity.weather &&
-          <CardsWrapper>
-          
-            <CardWeather city={weatherCity.city} weather={weatherCity.weather[activeDay]} />
 
-            {
-                  weatherCity.weather.map((weather, index) => (
-                  
-                  <CardDay
-                    weather={weather}
-                    index={index}
-                    activeDay={activeDay}
-                    setActiveDay={setActiveDay}
-                  />
+      <SearchBar setLocation={setLocation}/>
 
-                  ))
+      {  
+        !isLoading ?
+          <div>
+            {weatherCity && weatherCity.weather &&
+              <CardsWrapper> 
+                <CardWeather city={weatherCity.city} weather={weatherCity.weather[activeDay]} />
+                {
+                      weatherCity.weather.map((weather, index) => (
+                      
+                      <CardDay
+                        weather={weather}
+                        index={index}
+                        activeDay={activeDay}
+                        setActiveDay={setActiveDay}
+                      />
+
+                      ))
+                }
+              </CardsWrapper>
             }
-          </CardsWrapper>
-        }
+          </div>:
+
+          <Loader />
+
+      }
 
     </div>
   );

@@ -8,7 +8,7 @@ const getWeather = async (location = '') => {
         
       }
 
-    const weather = await axios.get(`http://localhost:5000/weather?city=${location}`);
+    const weather = await axios.get(`https://weather-production-bd00.up.railway.app/weather?city=${location}`);
 
     return weather.data;
 }

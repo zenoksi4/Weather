@@ -12,7 +12,7 @@ function App() {
   const dispatch = useDispatch();
   const { weatherCity, isLoading } = useSelector((state) => state.weather);
   const [location, setLocation] = useState('')
-
+  const [activeDay, setActiveDay] = useState(0)
 
   useEffect(() => {
     dispatch(getWeather(location));
@@ -23,24 +23,26 @@ function App() {
 
     <div className='container text-center '>
     <SearchBar />
-      <CardsWrapper>
-        <CardWeather />
-
         {weatherCity && weatherCity.weather &&
-              weatherCity.weather.map((weather, index) => (
-              
-              <CardDay
-                day={weather.date}
-                temp_day={weather.temp_day} 
-                temp_max={weather.temp_max} 
-                temp_min={weather.temp_min}
-                icon = {weather.icon}
-              />
+          <CardsWrapper>
+          
+            <CardWeather city={weatherCity.city} weather={weatherCity.weather[activeDay]} />
 
-              ))
+            {
+                  weatherCity.weather.map((weather, index) => (
+                  
+                  <CardDay
+                    weather={weather}
+                    index={index}
+                    activeDay={activeDay}
+                    setActiveDay={setActiveDay}
+                  />
+
+                  ))
+            }
+          </CardsWrapper>
         }
 
-      </CardsWrapper>
     </div>
   );
 }

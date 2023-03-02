@@ -1,0 +1,15 @@
+.cardDay {
+    cursor: pointer;
+
+}
+
+.cardDay :hover {
+    background-color: #4b8aa5;
+    border-radius: 15px;
+
+}
+
+.active {
+    opacity: 0.6;
+    cursor: default;
+}

@@ -1,28 +1,14 @@
-import CardDay from "../CardDay";
-
-const wrapper = {
-    backgroundColor:"#28688C",
-    boxShadow: "1px 5px 25px 3px #444",
-    borderRadius: "10px",
-    margin: "100px auto",
-    maxWidth: "720px",
-    padding: "0px",
-    color: "white",
-}
-
-
 function CardWeather() {
 
   return (
-    <div className="container-fluid" style={wrapper}>
-        <div className="row" style={{padding: "15px"}}>
-        
-            <div className="col-md-4 col-sm-5">
-                <h5>Lviv</h5>
-                <h6>Wednesday, March 1, 2023</h6>
+    <>
 
-                <img alt='' src='https://openweathermap.org/img/wn/03d@2x.png' style={{width:'155px', marginLeft: "5px"}}/>
-            </div>
+        <div className="col-md-4 col-sm-5">
+            <h5>Lviv</h5>
+            <h6>Wednesday, March 1, 2023</h6>
+
+            <img alt='' src='https://openweathermap.org/img/wn/03d@2x.png' style={{width:'155px', marginLeft: "5px"}}/>
+        </div>
 
         <div className="col-md-5 col-sm-7" style={{margin: "10px auto", padding: "0"}}>
             <div className="row">
@@ -51,20 +37,7 @@ function CardWeather() {
             </div>
         </div>
 
-
-            <div className="container-fluid">
-                <div className="row" >
-                    <CardDay />
-                    <CardDay />
-                    <CardDay />
-                    <CardDay />
-                    <CardDay />
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+    </>
   );
 }
 

@@ -4,22 +4,32 @@ import { getWeather } from './store/weather/weatherSlice';
 
 import CardWeather from "./components/CardWeather";
 import SearchBar from "./components/SearchBar";
+import CardDay from './components/CardDay';
+import CardsWrapper from './components/CardsWrapper';
+
 
 function App() {
   const dispatch = useDispatch();
-  const { weather, isLoading } = useSelector((state) => state.weather);
+  const { weatherCity, isLoading } = useSelector((state) => state.weather);
   const [location, setLocation] = useState('')
 
 
   useEffect(() => {
     dispatch(getWeather(location));
+    console.log(weatherCity);
+
   }, [dispatch]);
   
   return (
     <div className='container text-center '>
     <SearchBar />
+      <CardsWrapper>
+        <CardWeather />
 
-    <CardWeather />
+        <CardDay />
+        <CardDay />
+        <CardDay />
+      </CardsWrapper>
     </div>
   );
 }

@@ -16,19 +16,30 @@ function App() {
 
   useEffect(() => {
     dispatch(getWeather(location));
-    console.log(weatherCity);
-
+    console.log(weatherCity)
   }, [dispatch]);
   
   return (
+
     <div className='container text-center '>
     <SearchBar />
       <CardsWrapper>
         <CardWeather />
 
-        <CardDay />
-        <CardDay />
-        <CardDay />
+        {weatherCity && weatherCity.weather &&
+              weatherCity.weather.map((weather, index) => (
+              
+              <CardDay
+                day={weather.date}
+                temp_day={weather.temp_day} 
+                temp_max={weather.temp_max} 
+                temp_min={weather.temp_min}
+                icon = {weather.icon}
+              />
+
+              ))
+        }
+
       </CardsWrapper>
     </div>
   );
